@@ -14,7 +14,7 @@ public class Busca {
 		saida = "";
 	}
 	
-	//Visita os verticies caso n„o tenham sido visitados..
+	//Visita os verticies caso n√£o tenham sido visitados..
 	private void visitaDfs(int u, int cor[]) {
 		System.out.println(" Visitando o vertice: " + u);
 		saida += u + ", ";	//Armazena a ordem de visita dos vertices em uma string
@@ -31,14 +31,21 @@ public class Busca {
 	
 
 	 //Metodo que realiza a busca em profundidade propriamente dita.
-	public void buscaProfundidade() {
+	public void buscaProfundidade(int n0) {
 		int cor[] = new int[this.grafo.numeroVertices];
 		for (int u = 0; u < this.grafo.numeroVertices; u++) {
 			cor[u] = branco;
 		}
-		for (int u = 0; u < grafo.numeroVertices; u++) {
-			if (cor[u] == branco)
+		for (int u = n0; u < grafo.numeroVertices; u++) {
+			if (cor[u] == branco) {
 				this.visitaDfs(u, cor);
+			}
+		}
+		
+		for (int u = 0; u < n0; u++) {
+			if (cor[u] == branco) {
+				this.visitaDfs(u, cor);
+			}
 		}
 		System.out.print("\n Ordem de visita: ");
 		System.out.println(saida.substring(0, saida.lastIndexOf(",")));
